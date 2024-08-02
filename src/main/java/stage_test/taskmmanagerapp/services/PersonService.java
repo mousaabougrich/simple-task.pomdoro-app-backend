@@ -2,6 +2,7 @@ package stage_test.taskmmanagerapp.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import stage_test.taskmmanagerapp.entities.Person;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,15 +19,15 @@ import stage_test.taskmmanagerapp.reposotries.PersonRep;
 public class PersonService {
     @Autowired
     private PersonRep personRep;
-    //@Autowired
-   // private PasswordEncoder passwordEncoder;
+    @Autowired
+   private PasswordEncoder passwordEncoder;
 
     public Person addPerson(Person person) {
         if (personRep.findById(person.getId()).isPresent()) {
             throw new RuntimeException("Username already exists");
         }
-      //  String pwd=person.getPassword();
-      // person.setPassword(passwordEncoder.encode(pwd));
+      String pwd=person.getPassword();
+      person.setPassword(passwordEncoder.encode(pwd));
         return personRep.save(person);
     }
 
