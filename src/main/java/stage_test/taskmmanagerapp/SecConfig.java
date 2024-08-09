@@ -35,14 +35,14 @@ public class SecConfig {
                 .csrf((csrf) -> csrf.disable())//for diasbling the srcf
 
                 .authorizeRequests()//for autorzingrequeste
-                .anyRequest()
-                .authenticated()//must be authenticated
+                .anyRequest().permitAll()
+              //  .authenticated()//must be authenticated
                 .and().
                 httpBasic(Customizer.withDefaults());//enable basic http*/
         return http.build();
     }
 
-    @Bean
+  /*  @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsService() {
             @Override
@@ -59,10 +59,10 @@ public class SecConfig {
                 return new User(person.getUsername(), person.getPassword(), authorities);
             }
         };
-    }
+    }*/
 
-    @Autowired
+  /*  @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService());
-    }
+    }*/
 }
