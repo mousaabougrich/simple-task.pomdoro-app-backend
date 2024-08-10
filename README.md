@@ -31,7 +31,7 @@ Clone the Repository:
 
 bash
 
-git clone https://github.com/your-repo/task-manager-app.git
+[git clone https://github.com/your-repo/task-manager-app.git](https://github.com/mousaabougrich/simple-task-app-backend.git)
 cd task-manager-app
 Configure the Database:
 
