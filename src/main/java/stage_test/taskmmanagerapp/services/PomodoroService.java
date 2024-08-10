@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PomodoroService {
 
-    private static final long POMODORO_DURATION = 25 * 60 * 1000; // 25 minutes in milliseconds
-    private static final long SHORT_BREAK_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
-    private static final long LONG_BREAK_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
+    private static final long POMODORO_DURATION = 25 * 60 ;
+    private static final long SHORT_BREAK_DURATION = 5 * 60 ;
+    private static final long LONG_BREAK_DURATION = 15 * 60 ;
 
     private int pomodoroCount = 0;
     private String status = "Idle";
@@ -27,7 +27,7 @@ public class PomodoroService {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            remainingTime -= 1000;
+            remainingTime --;
         }
 
         if (pomodoroCount % 4 == 0) {
@@ -58,7 +58,7 @@ public class PomodoroService {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            remainingTime -= 1000;
+            remainingTime --;
         }
         status = "Short break ended. Ready for the next Pomodoro.";
     }
@@ -71,18 +71,18 @@ public class PomodoroService {
         while (remainingTime > 0) {
             status = "Long break in progress. Time left: " + formatTime(remainingTime);
             try {
-                Thread.sleep(1000); // Sleep for 1 second
+                Thread.sleep(1000); // this use milles otheres not
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            remainingTime -= 1000;
+            remainingTime --;
         }
         status = "Long break ended. Ready for the next Pomodoro.";
     }
 
     private String formatTime(long millis) {
-        long minutes = (millis / 1000) / 60;
-        long seconds = (millis / 1000) % 60;
+        long minutes = millis  / 60;
+        long seconds = millis % 60;
         return String.format("%02d:%02d", minutes, seconds);
     }
 }

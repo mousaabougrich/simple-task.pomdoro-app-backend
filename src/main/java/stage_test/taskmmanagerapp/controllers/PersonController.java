@@ -41,6 +41,7 @@ public class PersonController {
        personService.addRoleToPerson(username,role);
 
     }
+    //they do the same thing////
     @PostMapping("/addroletouser")
 
     public void addRoleToUser(@RequestBody RoleUserForm roleuser ){
