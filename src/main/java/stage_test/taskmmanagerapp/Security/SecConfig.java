@@ -30,7 +30,7 @@ public class SecConfig {
                 .csrf(csrf -> csrf.disable()) // Disable CSRF protection
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/api/register").permitAll()// Secure specific requests
+                                .requestMatchers("/api/register","api/login").permitAll()// Secure specific requests
                                 .anyRequest().authenticated() // Secure all other requests
                 )
                 .httpBasic(Customizer.withDefaults()); // Enable basic HTTP authentication
