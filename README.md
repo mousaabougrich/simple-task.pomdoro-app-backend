@@ -89,5 +89,4 @@ Feel free to suggest other resources that might help me and others who are also 
 
 
 
-Contact
-For any questions, suggestions, or tips, please contact [mos.ougf@gmail.com].
+
